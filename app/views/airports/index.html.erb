@@ -1,0 +1,19 @@
+
+  <% @airports.each do |airport_code| %>
+    <% airport = Airport.new %>
+    <% airport.code = airport_code[:code] %>
+
+    <h1 style= "color: #364b78"><%= airport.code %></h1>
+
+      <h5>Temperature: <%= airport.temperature %>&deg;F</h5>
+   <h5>Status:
+      <% if airport.delay < 15 %>
+        On time: Okee-Dokee good to go :)
+          <% elsif airport.delay < 30 %>
+          Delayed: A little waiting never hurt anyone...
+          <% else %>
+          Mega Delayed: That sucks!
+      <% end %></h5>
+    <h5><a style= "text-decoration: none; color: #4f7836" href="/city?id=<%= airport_code[:id] %>">Veiw on separate page</a></h5>
+
+  <% end %>

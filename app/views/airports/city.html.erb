@@ -1,0 +1,25 @@
+<div style="background: url('<%= @airport[:img] %>'); background-size: 100%; text-align: center">
+<br><br><br><br>
+<h1 style="font-size: 180px; color: white">Waz goin on at <%= @airport[:code] %></h1>
+
+  <% airport = Airport.new %>
+  <% airport.code = @airport[:code] %>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div class="details">
+    <p style="font-size: 100px; color: white">
+      <strong>Temperature:</strong> <%= airport.temperature %>&deg;F
+      <strong>Status:</strong>
+      <% if airport.delay < 15 %>
+        On time
+      <% elsif airport.delay < 30 %>
+        Delayed
+      <% else %>
+        NIGHTMARE
+    <% end %>
+    </p>
+  </div>
+
+</div>
+
